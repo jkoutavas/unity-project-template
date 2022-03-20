@@ -72,4 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 #unity-project-template
-Assets/Plugins
+Assets/_Project/Plugins
