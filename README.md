@@ -1,6 +1,6 @@
 # unity-project-template
 
-_Last updated March 20th, 2022_
+_Last updated March 22nd, 2022_
 
 A Unity project template for Heynow Games.
 
@@ -10,6 +10,7 @@ This is a work in progress which lays out what'll become the template for Unity 
 2. A "GameEngine" directory at `{clone-root}/GameEngine/src` separated completely from the Unity Project. This allows independent development and testing of the game's logic. The Unity project integrates with it via a debugable .dll Plugin.
 3. xUnit.net based unit testing at `{clone-root}/GameEngine/test` for the GameEngine (using [Getting Started with xUnit.net](https://xunit.net/docs/getting-started/netfx/cmdline) as a setup guide.
 4. A dotnet console app at `{clone-root}/Console` for interaction with the GameEngine, again, separate from Unity. Allowing for an independent "front end" to the GameEngine which validates the GameEngine as purely a backend without Unity dependencies. The Console is using the [Command Line Parser](https://www.nuget.org/packages/CommandLineParser/) nuget package to provide a REPL to interact with the GameEngine.
+5. An example `omnisharp.json` file (`example.omnisharp.json`) which can be placed at `~/.omnisharp/omnisharp.json` or in your project's tree for a consistent coding style.
 
 To put the GameEngine's .dll into the Unity project (at `{clone-root}/Project`):
 
