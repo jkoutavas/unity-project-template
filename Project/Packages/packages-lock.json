@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.csutil.cscore": {
+      "version": "https://github.com/cs-util-com/cscore.git?path=CsCore/PlainNetClassLib/src/Plugins",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.2"
+      },
+      "hash": "03ffa9d6ad9ae709557fd42872a7ee8eac20545a"
+    },
+    "com.csutil.cscore.unity": {
+      "version": "https://github.com/cs-util-com/cscore.git?path=CsCore/CsCoreUnity/Plugins",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "03ffa9d6ad9ae709557fd42872a7ee8eac20545a"
+    },
     "com.unity.collab-proxy": {
       "version": "1.15.13",
       "depth": 0,
@@ -58,6 +74,13 @@
     "com.unity.ide.vscode": {
       "version": "1.2.5",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "2.0.2",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

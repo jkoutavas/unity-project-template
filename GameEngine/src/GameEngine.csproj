@@ -4,4 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="com.csutil.cscore" Version="*" />
+    <!-- https://www.nuget.org/packages/Newtonsoft.Json -->
+    <PackageReference Include="Newtonsoft.Json" Version="*" />
+  </ItemGroup>
+  
 </Project>
