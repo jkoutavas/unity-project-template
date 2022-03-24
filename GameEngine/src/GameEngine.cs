@@ -1,5 +1,8 @@
 ﻿using com.csutil.model.immutable;
 
+/**
+ * A contrived example of a game engine. It's capable of actions against its "size" state.
+ **/
 namespace com.heynow.games {
     public class GameEngine {
         public class State {
@@ -12,6 +15,27 @@ namespace com.heynow.games {
 
         private State state;
         public DataStore<State> store;
+
+        public GameEngine() {
+            state = new State();
+            store = new DataStore<State>(Reducers.ReduceState, state);
+        }
+
+        // Provides a chokepoint for access to the engine's Store.
+        public DataStore<State> GetStore() => store;
+
+        public void DoAmazingThings() {
+            // If we had a real game engine, we'd have all kinds of methods to compute
+            // game state and in turn dispatch actions on the store for listening parties
+            // to act on.
+        }
+
+        // These Grow() and Shrink() methods are examples of dispatching an action from 
+        // within the engine itself. You may want to privatize your actions and have all 
+        // actions wrapped-up in engine methods.
+        public void Grow() => store.Dispatch(new Actions.Grow());
+
+        public void Shrink() => store.Dispatch(new Actions.Shrink());
 
         public class Actions {
             public class ChangeSize : Actions { public int newSize; }
@@ -38,23 +62,6 @@ namespace com.heynow.games {
                 if (action is Actions.ChangeSize s) { return s.newSize; }
                 return oldSize;
             }
-        }
-
-        public GameEngine() {
-            state = new State();
-            store = new DataStore<State>(Reducers.ReduceState, state);
-        }
-
-        public DataStore<State> GetStore() => store;
-
-        public void Grow() {
-            var size = state.size;
-            store.Dispatch(new Actions.Grow());
-        }
-
-        public void Shrink() {
-            var size = state.size;
-            store.Dispatch(new Actions.Shrink());
         }
     }
 }
