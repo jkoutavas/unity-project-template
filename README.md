@@ -13,7 +13,10 @@ This is a work in progress which lays out what'll become the template for Unity 
 5. A dotnet console app at `{clone-root}/Console` for interaction with the GameEngine, again, separate from Unity. Allowing for an independent "front end" to the GameEngine which validates the GameEngine as purely a backend without Unity dependencies. The Console is using the [Command Line Parser](https://www.nuget.org/packages/CommandLineParser/) nuget package to provide a REPL to interact with the GameEngine.
 6. An example `omnisharp.json` file (`example.omnisharp.json`) which can be placed at `~/.omnisharp/omnisharp.json` or in your project's tree for a consistent coding style.
 
-To put the GameEngine's .dll into the Unity project (at `{clone-root}/Project`):
+Have a look at the merged PR descriptions for some further details about these features.
+
+
+(this needs refinement) To put the GameEngine's .dll into the Unity project (at `{clone-root}/Project`):
 
 ```
 cd {clone-root}/GameEngine/src
