@@ -1,5 +1,7 @@
 ﻿using System.Text;
 using CommandLine;
+using com.csutil.model.immutable;
+using com.heynow.games;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 Console.ResetColor();
@@ -29,7 +31,9 @@ class Runtime {
     }
 
     public Runtime() {
-        game.SetSize(23);
+        game.GetStore().AddStateChangeListener(state => state.size, (size) => {
+            Console.WriteLine($"Size is now {size}");
+        });
 
         while (true) {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -45,16 +49,15 @@ class Runtime {
                 Console.ResetColor();
                 break;
             } else {
-                var result = Parser.Default.ParseArguments<Inspect>(splitter(input))
+                var result = Parser.Default.ParseArguments<Grow, Shrink>(splitter(input))
                     .MapResult(
-                        (Inspect o) => {
-                            switch (o.noun!) {
-                                case "size": {
-                                        return $"{game.Size}";
-                                    }
-                                default:
-                                    return "unknown inspect noun.";
-                            }
+                        (Grow o) => {
+                            game.Grow();
+                            return "Grow() called.";
+                        },
+                        (Shrink o) => {
+                            game.Shrink();
+                            return "Shrink() called.";
                         },
                         errors => "error");
                 Console.WriteLine(result);
@@ -62,9 +65,8 @@ class Runtime {
         }
     }
 
-    [Verb("inspect", HelpText = "inspect an object")]
-    public class Inspect {
-        [Value(0, HelpText = "'size'", Required = true)]
-        public string? noun { get; set; }
-    }
+    [Verb("grow", HelpText = "grow an object")]
+    public class Grow { }
+    [Verb("shrink", HelpText = "shrink an object")]
+    public class Shrink { }
 };

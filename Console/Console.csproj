@@ -11,4 +11,9 @@
 	<ItemGroup>
 		<PackageReference Include="CommandLineParser" Version="2.8.0"/>
 	</ItemGroup>
+	<ItemGroup>
+    	<PackageReference Include="com.csutil.cscore" Version="*" />
+    	<!-- https://www.nuget.org/packages/Newtonsoft.Json -->
+    	<PackageReference Include="Newtonsoft.Json" Version="*" />
+  </ItemGroup>
 </Project>
