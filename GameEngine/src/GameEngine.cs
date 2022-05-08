@@ -1,10 +1,14 @@
-﻿using com.csutil.model.immutable;
+﻿#nullable enable
+
+using com.csutil.model.immutable;
 
 /**
  * A contrived example of a game engine. It's capable of actions against its "size" state.
  **/
 namespace com.heynow.games {
     public class GameEngine {
+        static GameEngine? ge = null;
+
         public class State {
             public readonly int size;
 
@@ -16,7 +20,15 @@ namespace com.heynow.games {
         private State state;
         public DataStore<State> store;
 
+        public static GameEngine Get() {
+            if (ge == null) {
+                ge = new GameEngine();
+            }
+            return ge;
+        }
+
         public GameEngine() {
+            ge = this;
             state = new State();
             store = new DataStore<State>(Reducers.ReduceState, state);
         }
